@@ -8,10 +8,16 @@ Darknet::~Darknet() {
 
 }
 
-void Darknet::darknet_detect(char *filename, float thresh, int* hits, box **outboxes,
+void Darknet::darknet_detect_file(char *filename, float thresh, int* hits, box **outboxes,
                              float **outprobs, int **outclasses) {
 
-    detect(filename, thresh, hits, outboxes, outprobs, outclasses);
+    detect_file(filename, thresh, hits, outboxes, outprobs, outclasses);
+}
+
+void Darknet::darknet_detect_img(void* src, float thresh, int* hits, box **outboxes,
+                                   float **outprobs, int **outclasses) {
+
+    detect_img(src, thresh, hits, outboxes, outprobs, outclasses);
 }
 
 void Darknet::darknet_setup_cuda() {
