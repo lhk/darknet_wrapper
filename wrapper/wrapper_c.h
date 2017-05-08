@@ -3,8 +3,10 @@
 
 #include "box.h"
 
-void detect(char* cfgfile, char* weightfile, char* filename, float thresh, int* hits,
-            box** outboxes, float** outprobs, int** outclasses);
+void setup_network(char* cfgfile, char* weightfile);
 
-void initialize();
+void setup_cuda();
+
+void detect(char* filename, float thresh, int* hits,
+            box** outboxes, float** outprobs, int** outclasses);
 #endif

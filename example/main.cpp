@@ -10,23 +10,21 @@ Darknet darknet;
 
 int main(int argc, char **argv)
 {
-    cout<<"main"<<endl;
-    box test={1,2,3,4};
-
+    // setup the network.
+    // you MUST NOT run this more than once
     char* cfgfile="res/cones.cfg";
     char* weightsfile="res/cones_final.weights";
-    char* filename="res/1.png";
 
+    darknet.darknet_setup_network(cfgfile, weightsfile);
+    darknet.darknet_setup_cuda();
+
+    // applying the detector to an image
     box** outboxes= new box*;
     float** outprobs= new float*;
     int** outclasses= new int*;
     int hits;
-
-    darknet.darknet_initialize();
-
-    darknet.darknet_detect(cfgfile, weightsfile, filename, 0.5, &hits, outboxes, outprobs, outclasses);
-
-    cout<<"hits: "<<hits<<endl;
+    char* filename="res/1.png";
+    darknet.darknet_detect(filename, 0.5, &hits, outboxes, outprobs, outclasses);
 
     Mat test_image=imread("res/1.png");
     if(!test_image.data){
@@ -34,14 +32,8 @@ int main(int argc, char **argv)
         return -1;
     }
 
-    cout<<"image dimensions:"<<endl;
-    cout<<"x: "<<test_image.cols<<", y: "<<test_image.rows<<endl;
-
     for(int i=0; i<hits; i++){
         box hitbox=(*outboxes)[i];
-
-        cout<<"hitbox number: "<<i<<endl;
-        cout<<"x: "<<hitbox.x<<", y: "<<hitbox.y<<", w: "<<hitbox.w<<", h: "<<hitbox.h<<endl;
 
         float x,y,w,h;
         x=hitbox.x-hitbox.w/2;

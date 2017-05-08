@@ -11,10 +11,11 @@ public:
 
     Darknet();
     ~Darknet();
-    void darknet_detect(char* cfgfile, char* weightfile, char* filename, float thresh, int* hits,
+    void darknet_detect(char* filename, float thresh, int* hits,
                            box** outboxes, float** outprobs, int** outclasses);
 
-    void darknet_initialize();
+    void darknet_setup_network(char* cfgfile, char* weightfile);
+    void darknet_setup_cuda();
 };
 
 #endif
