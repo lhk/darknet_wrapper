@@ -18,7 +18,17 @@ int main(){
     float** outprobs = new float*;
     int** outclasses = new int*;
 
+    // the first time you request an instance, you have to supply the config and weights
+    // you could use Darknet::getInstance(cfg, weights) at the start of your program, to initialize the network
+    // and then use Darknet::getInstance() without parameters everywhere else
+    // the initialization can take some time, this is only done once
+
+    // apply the detector to a file
     Darknet::getInstance(cfg_path, weights_path).darknet_detect_file(filename, thresh, &hits, outboxes, outprobs, outclasses);
+
+
+
+
 
     // apply the detector to an opencv mat
     cv::Mat3b img= cv::imread("test/dog.jpg", cv::IMREAD_UNCHANGED);
@@ -29,7 +39,10 @@ int main(){
     // the detector expects an IplImage
     IplImage convertedImage = img;
 
-    Darknet::getInstance(cfg_path, weights_path).darknet_detect_img(&convertedImage, thresh, &hits, outboxes, outprobs, outclasses);
+    // this is the second time you use the singleton
+    // the network object is already created, no need to provide config files
+    // if you would provide such files, they would be ignored
+    Darknet::getInstance().darknet_detect_img(&convertedImage, thresh, &hits, outboxes, outprobs, outclasses);
 
     cout<<"hits: "<<hits;
     for (int i = 0; i < hits; i++) {
