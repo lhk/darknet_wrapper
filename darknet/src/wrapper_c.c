@@ -142,7 +142,7 @@ void detect_file(char *filename, float thresh, int *hits,
     free_ptrs((void **) probs, l.w * l.h * l.n);
 }
 
-void detect_img(void *src, float thresh, int *hits,
+void detect_img(IplImage* src, float thresh, int *hits,
                 box **outboxes, float **outprobs, int **outclasses) {
 
 

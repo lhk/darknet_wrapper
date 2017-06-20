@@ -10,7 +10,7 @@ int main(){
     char* weights_path = "test/tiny-yolo-voc.weights";
 
     // apply the detector to an image file
-    char* filename="dog.jpg";
+    char* filename="test/dog.jpg";
 
     float thresh = 0.4;
     int hits;
@@ -26,6 +26,7 @@ int main(){
         cout<<"couldn't load the test image"<<endl;
     }
 
+    // the detector expects an IplImage
     IplImage convertedImage = img;
 
     Darknet::getInstance(cfg_path, weights_path).darknet_detect_img(&convertedImage, thresh, &hits, outboxes, outprobs, outclasses);
