@@ -20,51 +20,54 @@ So I've created a singleton which can be used to request the object.
 1. clone this repo
 
 2. install opencv
-The opencv installation can be quite painful.
-Janis Maczijewski created a great bashscript that will solve this problem for you.
-It installs opencv to /opt/opencv320.
-So the first step is to run
-./install_opencv320.bash
 
-I would recommend using this script, even if you already have an existing opencv installation.
-We used this library while linking against opencv3.2.0, and didn't have any problems.
+    The opencv installation can be quite painful.
+    Janis Maczijewski created a great bashscript that will solve this problem for you.
+    It installs opencv to /opt/opencv320.
+    So the first step is to run
+    ./install_opencv320.bash
 
-If you want to use your own opencv version, you have to edit the Makefile in darknet/ and the CMakeLists.txt
-Look for /opt/opencv320 and replace it with your paths.
+    I would recommend using this script, even if you already have an existing opencv installation.
+    We used this library while linking against opencv3.2.0, and didn't have any problems.
+    
+    If you want to use your own opencv version, you have to edit the Makefile in darknet/ and the CMakeLists.txt
+    Look for /opt/opencv320 and replace it with your paths.
 
 3. install cuda and cudnn
-Follow the nvidia instructions on how to install them
 
-You can compile darknet without cudnn.
-To do this, you need to edit the Makefile in darknet/
-At the very top, set CUDNN=0
+    Follow the nvidia instructions on how to install them
+    
+    You can compile darknet without cudnn.
+    To do this, you need to edit the Makefile in darknet/
+    At the very top, set CUDNN=0
 
 4. clone the darknet repo
 
-Move out of this folder and execute
-git clone https://github.com/pjreddie/darknet
-
-Then take all the darknet source files from darknet/src/ and copy them to darknet/src/ in this repo.
-You don't need any other files.
+    Move out of this folder and execute
+    git clone https://github.com/pjreddie/darknet
+    
+    Then take all the darknet source files from darknet/src/ and copy them to darknet/src/ in this repo.
+    You don't need any other files.
 
 5. compile darknet
-in this repo, go to darknet/
-and run
-make -j 8
 
-If there are any problems, try
-make clean
-make
-
-Without the -j 8 option, the compilation will use just one core.
-Multicore compilation can swallow error messages.
+    in this repo, go to darknet/
+    and run
+    make -j 8
+    
+    If there are any problems, try
+    make clean
+    make
+    
+    Without the -j 8 option, the compilation will use just one core.
+    Multicore compilation can swallow error messages.
 
 
 6. Compile the wrapper
 
-mkdir build
-cd build
-cmake ..
-make -j 8
+    mkdir build
+    cd build
+    cmake ..
+    make -j 8
 
 7. run the wrapper
