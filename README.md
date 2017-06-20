@@ -5,14 +5,14 @@ Key features are integration with cmake and opencv.
 
 # Structure
 The wrapper is a c++ singleton.
-To use darknet, you need to create an instance of type network.
-The struct network is defined in network.h, which includes cuda source files.
+To use darknet, you need to create an instance of type 'network'.
+The struct 'network' is defined in 'network.h', which includes cuda source files.
 It's not easily possible to import this header into c++ code.
 The c++ compiler can work with regions marked as c code. 
 But cuda within these c regions is tricky.
-So I decided to keep the network struct invisible to the c++ code.
-The library just creates a network object and exposes methods to work with it.
-In the current implementation, just one such network object is allocated.
+So I decided to keep the 'network' struct invisible to the c++ code.
+The library just creates a 'network' object and exposes methods to work with it.
+In the current implementation, just one such 'network' object is allocated.
 So I've created a singleton which can be used to request the object.
 
 # Installation
