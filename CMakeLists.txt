@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(fsdvision)
+project(wrapper)
 add_compile_options(-std=c++14 -Werror=return-type -Wall)
 
 set (CMAKE_BUILD_TYPE  DEBUG)
