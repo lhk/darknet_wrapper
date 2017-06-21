@@ -13,6 +13,7 @@ include_directories(
     ${OpenCV_INCLUDE_DIRS}
     ${CUDA_INCLUDE_DIRS}
     src
+    darknet/include
 )
 
 link_directories(
