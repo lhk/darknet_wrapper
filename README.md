@@ -47,6 +47,7 @@ So I've created a singleton which can be used to request the object.
     git clone https://github.com/pjreddie/darknet
     
     Then take all the darknet source files from darknet/src/ and copy them to darknet/src/ in this repo.
+    Copy darknet/include to darknet/. Darknet/ now contains both src/ and include/
     You don't need any other files.
 
 5. compile darknet
