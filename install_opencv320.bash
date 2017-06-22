@@ -27,7 +27,7 @@ cd /tmp/opencvbuild320/opencv
 mkdir build
 cd build
 
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/opt/opencv320 -D BUILD_EXAMPLES=ON -D CUDA_GENERATION=Auto -DOPENCV_EXTRA_MODULES_PATH=/tmp/opencvbuild320/opencv_contrib/modules ..
+cmake -D WITH_CUDA=ON -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/opt/opencv320 -D BUILD_EXAMPLES=ON -D CUDA_GENERATION=Auto -DOPENCV_EXTRA_MODULES_PATH=/tmp/opencvbuild320/opencv_contrib/modules ..
 
 
 read -p "Please check the cmake output. [Y] to continue: " -n 1 -r
