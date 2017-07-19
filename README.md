@@ -44,7 +44,8 @@ So I've created a singleton which can be used to request the object.
 4. clone the darknet repo
 
     Move out of this folder and execute
-    git clone https://github.com/pjreddie/darknet
+     - git clone https://github.com/pjreddie/darknet
+     - git checkout 59ed1719d4aa77a462eb41dd4db2dd3a2f8e4a1b
     
     Then take all the darknet source files from darknet/src/ and copy them to darknet/src/ in this repo.
     Copy darknet/include to darknet/. Darknet/ now contains both src/ and include/
@@ -54,11 +55,11 @@ So I've created a singleton which can be used to request the object.
 
     in this repo, go to darknet/
     and run
-    make -j 8
+     - make -j 8
     
     If there are any problems, try
-    make clean
-    make
+     - make clean
+     - make
     
     Without the -j 8 option, the compilation will use just one core.
     Multicore compilation can swallow error messages.
@@ -66,9 +67,9 @@ So I've created a singleton which can be used to request the object.
 
 6. Compile the wrapper
 
-    mkdir build
-    cd build
-    cmake ..
-    make -j 8
+     - mkdir build
+     - cd build
+     - cmake ..
+     - make -j 8
 
 7. run the wrapper
