@@ -46,6 +46,8 @@ So I've created a singleton which can be used to request the object.
     Move out of this folder and execute
      - git clone https://github.com/pjreddie/darknet
      - git checkout 59ed1719d4aa77a462eb41dd4db2dd3a2f8e4a1b
+     
+    The checkout is very important. Darknet is a moving target and later versions break compatibility with this wrapper.
     
     Then take all the darknet source files from darknet/src/ and copy them to darknet/src/ in this repo.
     Copy darknet/include to darknet/. Darknet/ now contains both src/ and include/
